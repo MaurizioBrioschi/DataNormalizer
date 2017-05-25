@@ -1,0 +1,29 @@
+{
+    "name": "ridesoft/data-normalizer",
+    "description": "Data Normalization library/tool to normalize data sources into a configured array",
+    "type": "library",
+    "require": {
+        "symfony/yaml": "^3.2",
+        "symfony/console": "^3.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "ridesoft\\Normalizer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ridesoft\\Normalizer\\Tests\\": "src/tests/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maurizio Brioschi",
+            "email": "maurizio.brioschi@gmail.com"
+        }
+    ]
+}
