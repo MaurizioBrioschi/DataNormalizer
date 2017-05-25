@@ -20,7 +20,7 @@ interface ConfigurationInterface
     /**
      * @return string
      */
-    public function getDataSourceType():    string;
+    public function getDataSourceType(): string;
 
     /**
      * @return array

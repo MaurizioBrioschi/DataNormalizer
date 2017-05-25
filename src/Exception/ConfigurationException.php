@@ -16,7 +16,7 @@ namespace ridesoft\Normalizer\Exception;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-class ConfigurationNotFoundException extends \Exception
+class ConfigurationException extends \Exception
 {
 
 }

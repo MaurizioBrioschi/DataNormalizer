@@ -25,7 +25,7 @@ abstract class AbstractDatasourceFactory
      */
     public function getDatasource(string $type): DataSourceInterface
     {
-        switch (strtolower($type)){
+        switch (strtolower($type)) {
             case 'xml':
                 return new XmlDataSource();
         }

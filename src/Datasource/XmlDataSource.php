@@ -1,5 +1,6 @@
 <?php
 namespace ridesoft\Normalizer\Datasource;
+
 use ridesoft\Normalizer\Exception\DataSourceException;
 
 /**
@@ -31,7 +32,7 @@ class XmlDataSource implements DataSourceInterface
      */
     public function getContent(): \SimpleXMLElement
     {
-        if(null===$this->xmlFilePath){
+        if (null === $this->xmlFilePath) {
             throw new DataSourceException('Xml file not set for XmlDataSource');
         }
         return simplexml_load_file($this->xmlFilePath, \SimpleXMLElement::class);

@@ -59,9 +59,9 @@ class XmlNormalizer extends AbstractNormalizer
      */
     function setDataToNormalize(DataSourceInterface $data): NormalizerInterface
     {
-       if($data instanceof XmlDataSource){
-           $this->dataSource = $data;
-       }
-       throw new IncompatibleDataTypeException('XmlDataSource object required');
+        if ($data instanceof XmlDataSource) {
+            $this->dataSource = $data;
+        }
+        throw new IncompatibleDataTypeException('XmlDataSource object required');
     }
 }

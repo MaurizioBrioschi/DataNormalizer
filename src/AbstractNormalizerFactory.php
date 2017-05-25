@@ -1,7 +1,6 @@
 <?php
 namespace ridesoft\Normalizer;
 
-use MongoDB\Driver\Exception\ConnectionException;
 use ridesoft\Normalizer\Configuration\ConfigurationInterface;
 use ridesoft\Normalizer\Configuration\YamlConfiguration;
 use ridesoft\Normalizer\Datasource\XmlDataSource;
@@ -38,13 +37,13 @@ abstract class AbstractNormalizerFactory
 
     public function gerNormalizer(): NormalizerInterface
     {
-        if(null===$this->configurationfile){
-            throw new ConnectionException('Configuration file not set');
+        if (null === $this->configurationfile) {
+            throw new ConfigurationException('Configuration file not set');
         }
 
-        switch (strtolower($this->getConfiguration()->getDataSourceType())){
+        switch (strtolower($this->getConfiguration()->getDataSourceType())) {
             case 'xml';
-                if(null===$this->xmlNormalizer){
+                if (null === $this->xmlNormalizer) {
                     $this->xmlNormalizer = new XmlNormalizer();
                     /** @var XmlDataSource $dataSource */
                     $dataSource = new XmlDataSource();
@@ -59,7 +58,23 @@ abstract class AbstractNormalizerFactory
         }
     }
 
-
+    /**
+     * @return ConfigurationInterface
+     */
+    public function getConfiguration(): ConfigurationInterface
+    {
+        if (null === $this->configuration) {
+            $extension = pathinfo($this->configurationfile, PATHINFO_EXTENSION);
+            switch (strtolower($extension)) {
+                case 'yaml':
+                    $this->configuration = new YamlConfiguration($this->configurationfile);
+                    break;
+                default:
+                    throw new ConfigurationException('Configuration file type not supported');
+            }
+        }
+        return $this->configuration;
+    }
 
     /**
      * Set the configuration file path
@@ -72,28 +87,10 @@ abstract class AbstractNormalizerFactory
      */
     public function setConfigurationFile(string $configurationPath)
     {
-        if(!file_exists($configurationPath)){
-            throw new ConfigurationException('Configuration file not fout at '.$configurationPath);
+        if (!file_exists($configurationPath)) {
+            throw new ConfigurationException('Configuration file not fout at ' . $configurationPath);
         }
         $this->configurationfile = $configurationPath;
         return $this;
-    }
-
-    /**
-     * @return ConfigurationInterface
-     */
-    public function getConfiguration():  ConfigurationInterface
-    {
-        if(null===$this->configuration){
-            $extension = pathinfo($this->configurationfile, PATHINFO_EXTENSION);
-            switch (strtolower($extension)){
-                case 'yaml':
-                    $this->configuration = new YamlConfiguration($this->configurationfile);
-                    break;
-                default:
-                    throw new ConfigurationException('Configuration file type not supported');
-            }
-        }
-        return $this->configuration;
     }
 }

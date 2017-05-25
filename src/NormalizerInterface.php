@@ -1,6 +1,6 @@
 <?php
 namespace ridesoft\Normalizer;
-use ridesoft\Normalizer\Configuration\ConfigurationInterface;
+
 use ridesoft\Normalizer\Datasource\DataSourceInterface;
 use ridesoft\Normalizer\Mapping\MappingInterface;
 
