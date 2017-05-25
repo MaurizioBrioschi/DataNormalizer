@@ -2,6 +2,7 @@
 namespace ridesoft\Normalizer\Datasource;
 
 use ridesoft\Normalizer\Exception\DataSourceException;
+use DOMDocument;
 
 /**
  * Class XmlDataSource
@@ -35,7 +36,9 @@ class XmlDataSource implements DataSourceInterface
         if (null === $this->xmlFilePath) {
             throw new DataSourceException('Xml file not set for XmlDataSource');
         }
-        return simplexml_load_file($this->xmlFilePath, \SimpleXMLElement::class);
+        if($this->isXmlValid()) {
+            return simplexml_load_file($this->xmlFilePath, \SimpleXMLElement::class);
+        }
     }
 
     /**
@@ -50,5 +53,26 @@ class XmlDataSource implements DataSourceInterface
     {
         $this->xmlFilePath = $source;
         return $this;
+    }
+
+    /**
+     * Check if the XML is valid
+     * @todo check against an xsd
+     *
+     * @return bool
+     *
+     * @throws DataSourceException
+     */
+    protected function isXmlValid()
+    {
+        libxml_use_internal_errors(true);
+        $doc = new DOMDocument();
+        $doc->loadXML($this->xmlFilePath);
+        $errors = libxml_get_errors();
+
+        if(empty($errors)){
+            return true;
+        }
+        throw new DataSourceException('File'.$this->xmlFilePath.' is not a valid xml:'.print_r($errors, true));
     }
 }
