@@ -6,7 +6,7 @@ namespace ridesoft\Normalizer;
  *
  * PHP version 7.1
  *
- * @author    Maurizio Brioschi <maurizio.brioschi@ridesoft.org>
+ * @author    Maurizio Brioschi <maurizio.brioschi@gmail.com>
  * @copyright ${YEAR} Maurizio Brioschi
  * @license   MIT   https://opensource.org/licenses/MIT
  * @link      https://github.com/MaurizioBrioschi

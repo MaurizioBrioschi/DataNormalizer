@@ -14,7 +14,7 @@ use ridesoft\Normalizer\Mapping\ConfigurationFileMapping;
  *
  * PHP version 7.1
  *
- * @author    Maurizio Brioschi <maurizio.brioschi@ridesoft.org>
+ * @author    Maurizio Brioschi <maurizio.brioschi@gmail.com>
  * @copyright 2017 Maurizio Brioschi
  * @license   MIT   https://opensource.org/licenses/MIT
  * @link      https://github.com/MaurizioBrioschi
