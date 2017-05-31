@@ -1,0 +1,6 @@
+datasource:
+  type: xml
+  source: path/to/file
+
+mapping:
+  node: {mappedTo: rock}

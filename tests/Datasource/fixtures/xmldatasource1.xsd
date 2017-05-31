@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="album" type="albumType"/>
+  <xs:complexType name="trackType">
+    <xs:sequence>
+      <xs:element name="path">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="song1.mp3"/>
+            <xs:enumeration value="song2.mp3"/>
+            <xs:enumeration value="song3.mp3"/>
+            <xs:enumeration value="song4.mp3"/>
+            <xs:enumeration value="song5.mp3"/>
+            <xs:enumeration value="song6.mp3"/>
+            <xs:enumeration value="song7.mp3"/>
+            <xs:enumeration value="song8.mp3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="title">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Track 1 - Track Title"/>
+            <xs:enumeration value="Track 2 - Track Title"/>
+            <xs:enumeration value="Track 3 - Track Title"/>
+            <xs:enumeration value="Track 4 - Track Title"/>
+            <xs:enumeration value="Track 5 - Track Title"/>
+            <xs:enumeration value="Track 6 - Track Title"/>
+            <xs:enumeration value="Track 7 - Track Title"/>
+            <xs:enumeration value="Track 8 - Track Title"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="albumType">
+    <xs:sequence>
+      <xs:element type="trackType" name="track" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
